@@ -8,8 +8,8 @@ function Routes() {
         <Route exact path='/'>
             <Redirect to='/search'/>
         </Route>
-        <Route exact path={['/search','/images','/news','/videos']}>
-    
+        <Route exact path={['/searchs','/images','/news','/videos']}>
+
         </Route>
       </Switch>
     </div>
