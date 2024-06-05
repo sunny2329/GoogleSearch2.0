@@ -1,23 +1,24 @@
-import { useState } from "react"
-import Footer from "./components/Footer"
-import Navbar from "./components/Navbar"
-import Routes from "./components/Routes"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Home from "./components/Home";
+import SearchResult from "./components/SearchResult";
+import { AppContext } from "./utils/ContextApi";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(false);
-
-  return (
-
-    <div className={darkTheme ? 'dark' : ''}>
-      <div className="bg-gray-100 min-h-screen dark:bg-gray-900 dark:text-gray-200">
-        <Navbar darkTheme= {darkTheme} setDarkTheme={setDarkTheme}/>
-        <Routes/>
-        <Footer/>
-      </div>
-    </div>
-
-  )
+    return (
+        <AppContext>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" exact element={<Home />} />
+                    <Route
+                        path="/:query/:startIndex"
+                        exact
+                        element={<SearchResult />}
+                    />
+                </Routes>
+            </BrowserRouter>
+        </AppContext>
+    );
 }
 
-export default App
+export default App;
